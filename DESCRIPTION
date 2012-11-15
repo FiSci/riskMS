@@ -1,0 +1,13 @@
+Package: riskMS
+Version: 0.1.14
+Date: 2012-08-24
+Title: Risk Management System
+Authors@R: c(person("Humberto", "Gonzalez", role = c("aut",
+        "cre"),email = "humberto.gonzalez@financial-science.net"))
+Author: Humberto Gonzalez <humberto.gonzalez@financial-science.net>
+Maintainer: Humberto Gonzalez <humberto.gonzalez@financial-science.net>
+Depends: R (>= 2.6.0), methods, ggplot2, scales, reshape2, xtable
+Description: Provides a framework for financial risk measurement.
+License: GPL (>= 2)
+URL: http://www.r-project.org, http://www.financial-science.net
+Packaged: 2012-10-30 19:39:51 UTC; riesgosDEV

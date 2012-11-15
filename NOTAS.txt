@@ -1,0 +1,3 @@
+- En la función .as.cashFlow.amortizationSchedule se multiplica por 100 las tasas ya que en la BD, éstas vienen divididas entre 100.
+
+- Leer curvas y tipos de cambio de dias inhábiles como la ultima anterior.
