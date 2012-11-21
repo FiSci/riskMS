@@ -32,8 +32,8 @@ setMethod("plot", signature(x="PLs"),
 		p <- p + geom_density(aes(x=PLs),size=.5, kernel="gaussian", fill="steelblue", alpha=.25, data=dataF)
 		p <- p + scale_x_continuous("pérdida", labels=comma)
 		p <- p + scale_y_continuous(labels=NULL)
-		p <- p + opts(axis.title.x=theme_text(size=9), axis.title.y=theme_blank())
-		p + opts(axis.text.x=theme_text(size=8))
+		p <- p + theme(axis.title.x=element_text(size=9), axis.title.y=element_blank())
+		p + theme(axis.text.x=element_text(size=8))
 	}
 )
 

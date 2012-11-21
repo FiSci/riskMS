@@ -147,7 +147,6 @@ setMethod("sensitivity", signature(object="rateCurveList"),
 		type <- match.arg(type)
 		newCurves <- lapply(object, function(x) sensitivity(x, bps, type=type))
 		name <- paste(object@name, " (", type, ")", sep="")
-		print(name)
 		new(class(object), newCurves)
 	}
 )

@@ -633,7 +633,7 @@ setMethod("cumLiquidityGap", signature(object="cashFlow"),
 		df$cumValue <- cumsum(df$value)
 		df$currency <- object@currency
 		if (plot) {
-			ret <- ggplot(df, aes(x=date, y=cumValue)) + geom_step() + opts(axis.text.x=theme_text(size=6), axis.text.y=theme_text(size=6))
+			ret <- ggplot(df, aes(x=date, y=cumValue)) + geom_step() + theme(axis.text.x=element_text(size=6), axis.text.y=element_text(size=6))
 		} else {
 			ret <- df
 		}
@@ -684,7 +684,7 @@ setMethod("plot", signature(x="cashFlow"),
 		tickMarks <- sort(c(unique(dataFBuckets$f_ini), max(dataFBuckets$f_fin)))
 		i <- 2
 		while(i < length(tickMarks)) {
-			print(as.numeric(tickMarks[i] - tickMarks[i-1]) < 15)
+#			print(as.numeric(tickMarks[i] - tickMarks[i-1]) < 15)
 			if (as.numeric(tickMarks[i] - tickMarks[i-1]) < 15 ) {
 				tickMarks <- tickMarks[-i]
 			}
@@ -699,9 +699,9 @@ setMethod("plot", signature(x="cashFlow"),
 		p2 <- p2 + scale_y_continuous("monto", labels=comma)
 		p2 <- p2 + scale_x_date(breaks=tickMarks) 
 #		p2 <- p2 + scale_fill_discrete("tipo")
-		p2 <- p2 + opts(axis.text.x=theme_text(size=6, angle=90), axis.text.y=theme_text(size=6)) 
-		p2 <- p2 + opts(axis.title.x=theme_blank(), axis.title.y = theme_text(size=9))
-		p2 + opts(legend.text=theme_text(size=6), legend.title=theme_text(size=9))
+		p2 <- p2 + theme(axis.text.x=element_text(size=6, angle=90), axis.text.y=element_text(size=6)) 
+		p2 <- p2 + theme(axis.title.x=element_blank(), axis.title.y = element_text(size=9))
+		p2 + theme(legend.text=element_text(size=6), legend.title=element_text(size=9))
 	}
 )
 

@@ -506,7 +506,7 @@ setMethod("cumLiquidityGap", signature(object="cashFlowPortfolio"),
 			dfAll <- rbind(dfAll, dfCur)
 		}
 		if (plot) {
-			ret <- ggplot(dfAll, aes(x=date, y=cumValue)) + geom_step() + facet_wrap( ~currency, scales = "free_y", nrow=2)  + opts(axis.text.x=theme_text(size=6), axis.text.y=theme_text(size=6))
+			ret <- ggplot(dfAll, aes(x=date, y=cumValue)) + geom_step() + facet_wrap( ~currency, scales = "free_y", nrow=2)  + theme(axis.text.x=element_text(size=6), axis.text.y=element_text(size=6))
 		} else {
 			ret <- dfAll
 		}
@@ -524,13 +524,10 @@ setMethod("plot", signature(x="cashFlowPortfolio"),
 		} else{
 			intervals <- c(7, 28, 91, 182, 364, 728, 1092, 1820, 3640, 5460)
 		}
-		print("OK1")
 		intervals <- valDate + c(0, intervals)
 		intervalsLen <- length(intervals)
 		
 		dataF <- cumLiquidityGap(x, fillDates=FALSE, plot=FALSE)
-		print(dim(dataF))
-		print("OK2")
 		maxDate <- max(as.Date(dataF$date))
 
     	if(dim(dataF)[1] == 0) {
@@ -544,7 +541,6 @@ setMethod("plot", signature(x="cashFlowPortfolio"),
     	
     	dataF <- dataF[dataF$date >= intervals[1] & dataF$date <= intervals[length(intervals)], ]
     	dataF <- dataF[dataF$date <= maxDate, ]
-		print("OK3")
     	# Crea un data frame con los valores de los intereses fix, intereses variables 
     	# y amortizacion agregados
     	cur <- unique(getAttr(x, "currency"))
@@ -606,9 +602,9 @@ setMethod("plot", signature(x="cashFlowPortfolio"),
 		p2 <- p2 + scale_y_continuous("monto", labels=comma)
 		p2 <- p2 + scale_x_date(breaks=tickMarks) 
 #		p2 <- p2 + scale_fill_discrete("tipo")
-		p2 <- p2 + opts(axis.text.x=theme_text(size=6, angle=90), axis.text.y=theme_text(size=6)) 
-		p2 <- p2 + opts(axis.title.x=theme_blank(), axis.title.y = theme_text(size=9, angle=90))
-		p2 + opts(legend.text=theme_text(size=6), legend.title=theme_text(size=9))
+		p2 <- p2 + theme(axis.text.x=element_text(size=6, angle=90), axis.text.y=element_text(size=6)) 
+		p2 <- p2 + theme(axis.title.x=element_blank(), axis.title.y = element_text(size=9, angle=90))
+		p2 + theme(legend.text=element_text(size=6), legend.title=element_text(size=9))
 	}
 )
 

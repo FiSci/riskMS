@@ -38,9 +38,7 @@ setMethod("as.spotRate", signature(object="BNSpotRateList"),
 	#           type.- tipo de interpolacion
 	# OUTPUT:    objeto de clase spotRateList
 		new_list <- lapply(object, function(x) as.spotRate(x, type))
-		
-	    print(object@name)
-	    new("spotRateList", new_list)
+	  new("spotRateList", new_list)
 	}
 )
 
@@ -89,11 +87,11 @@ setMethod("plot", signature(x="BNSpotRateList"),
 		p <- ggplot(dataF, aes(x=NODES, y=value, group=as.numeric(variable),colour=as.numeric(variable))) + geom_line(alpha=.4)
 		p <- p + scale_colour_gradient("Dates",low="red", high="blue", breaks=c(min_date_numeric, max_date_numeric), labels=c(min_date, max_date))
 		p <- p + geom_segment(aes(x=NODES, y=value, xend=NODES2, yend=RATES2), colour="black",data=dataFLine, size=.7) + geom_point(aes(x=NODES, y=value), colour="black",size=1.2, data=dataFLine)
-		p <- p + opts(axis.title.x=theme_blank(), axis.title.y = theme_blank(),	axis.text.x=theme_text(size=6), axis.text.y=theme_text(size=6)) 
+		p <- p + theme(axis.title.x=element_blank(), axis.title.y = element_blank(),	axis.text.x=element_text(size=6), axis.text.y=element_text(size=6)) 
 		p <- p + scale_fill_discrete("fecha")
 		p <- p + scale_x_continuous("plazo", breaks=tickMarks[-1]) 
-		p <- p + opts(legend.text=theme_text(size=6), legend.title=theme_text(size=9))
-		p <- p + opts(axis.text.x=theme_text(size=6, angle=90), axis.title.x=theme_text(size=9))
+		p <- p + theme(legend.text=element_text(size=6), legend.title=element_text(size=9))
+		p <- p + theme(axis.text.x=element_text(size=6, angle=90), axis.title.x=element_text(size=9))
 		p
 	}
 )

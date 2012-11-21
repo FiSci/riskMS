@@ -10,9 +10,9 @@ setMethod("plot", signature(x="KRD"),
 		p <- p + scale_y_continuous("cambio (en miles de pesos)", labels=comma)
 		p <- p + scale_x_discrete("plazo", limits=as.character(unique(KRDdf$risk_factor)))
 		p <- p + scale_fill_discrete("factor")
-		p <- p + opts(axis.text.x=theme_text(size=6, angle=90), axis.text.y=theme_text(size=6)) 
-		p <- p + opts(axis.title.x=theme_text(size=9), axis.title.y = theme_text(size=9, angle=90))
-		p + opts(legend.text=theme_text(size=6), legend.title=theme_text(size=9))
+		p <- p + theme(axis.text.x=element_text(size=6, angle=90), axis.text.y=element_text(size=6)) 
+		p <- p + theme(axis.title.x=element_text(size=9), axis.title.y = element_text(size=9, angle=90))
+		p + theme(legend.text=element_text(size=6), legend.title=element_text(size=9))
 	}
 )
 
