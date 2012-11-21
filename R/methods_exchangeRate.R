@@ -59,7 +59,7 @@ setMethod("plot", signature(x="exchangeRate"),
 		} else {
 			p <- ggplot(dataF, aes(x=date, y=MXN)) + geom_line() 
 		} 		
-		p + opts(axis.title.x=theme_blank(), axis.title.y = theme_blank()) 
+		p + theme(axis.title.x=element_blank(), axis.title.y = element_blank()) 
 	}
 )
 

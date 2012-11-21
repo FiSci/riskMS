@@ -86,8 +86,8 @@ setMethod("plot", signature(x="exchangeRateList"),
 			p <- ggplot(dataF, aes(x=date, y=value, colour=currency)) + geom_line()
 		}
 		p <- p + scale_fill_discrete("moneda")
-		p <- p + opts(legend.text=theme_text(size=6), legend.title=theme_text(size=9))
-		p + opts(axis.title.x=theme_blank(), axis.title.y = theme_blank(), axis.text.x=theme_text(size=6), axis.text.y=theme_text(size=6)) 
+		p <- p + theme(legend.text=element_text(size=6), legend.title=element_text(size=9))
+		p + theme(axis.title.x=element_blank(), axis.title.y = element_blank(), axis.text.x=element_text(size=6), axis.text.y=element_text(size=6)) 
 	}
 )
 
