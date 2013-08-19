@@ -578,7 +578,7 @@ setMethod("liquidityGapFWD", signature(valDate="Date", object="cashFlow", curves
 	function(valDate, object, curves, exRate, breaks, ...) {
 		fwd <- 1
 		if (object@currency != "MXN") {
-			domesticCurve <- select(curves, name="DESC_IRS")[[1]]
+			domesticCurve <- select(curves, name="DESCUENTO_IRS")[[1]]
 
 			# Selecciona la curva con esa moneda
 			foreignCurve <- select(curves, name=getAttr(object, "factor")[[1]])[[1]]

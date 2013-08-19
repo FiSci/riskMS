@@ -1,5 +1,5 @@
 .catalog <- function(df) {
-	catalog <- c(CCS_MID="LIBOR", DESC_IRS="TIIE", FIX="Fija",CD.CC="Directo Cuenta Corriente",
+	catalog <- c(CROSS_CURRENCY_MID="LIBOR", DESCUENTO_IRS="TIIE", FIX="Fija",CD.CC="Directo Cuenta Corriente",
 		CD.REFAC="Directo Refaccionario",CD.AVIO="Directo Avío",COM.REFAC="Comisionista Refaccionario",
 		COM.AVIO="Comisionista Avío",REPORTO="Reporto",TOTAL="Total")
 	factor <- which(sapply(df,is.factor))
