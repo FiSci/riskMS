@@ -6,7 +6,7 @@
 	if(length(factor)>0) for(j in 1:length(factor)) df[,j] <- as.character(df[,j])	
 	dfDim <- dim(df)
 	for(i in 1:length(catalog)) {
-		if (sum(df==names(catalog[i])) > 0) {
+		if (sum(df==names(catalog[i]), na.rm=TRUE) > 0) {
 			index <- which(df==names(catalog[i]))
 			for(k in index) {
 				row <- k %% dfDim[1]
