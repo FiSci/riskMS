@@ -1,12 +1,12 @@
 .catalog <- function(df) {
-	catalog <- c(CCS_MID="LIBOR", DESC_IRS="TIIE", FIX="Fija",CD.CC="Directo Cuenta Corriente",
+	catalog <- c(CROSS_CURRENCY_MID="LIBOR", DESCUENTO_IRS="TIIE", FIX="Fija",CD.CC="Directo Cuenta Corriente",
 		CD.REFAC="Directo Refaccionario",CD.AVIO="Directo Avío",COM.REFAC="Comisionista Refaccionario",
 		COM.AVIO="Comisionista Avío",REPORTO="Reporto",TOTAL="Total")
 	factor <- which(sapply(df,is.factor))
 	if(length(factor)>0) for(j in 1:length(factor)) df[,j] <- as.character(df[,j])	
 	dfDim <- dim(df)
 	for(i in 1:length(catalog)) {
-		if (sum(df==names(catalog[i])) > 0) {
+		if (sum(df==names(catalog[i]), na.rm=TRUE) > 0) {
 			index <- which(df==names(catalog[i]))
 			for(k in index) {
 				row <- k %% dfDim[1]
