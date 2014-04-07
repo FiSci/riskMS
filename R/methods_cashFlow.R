@@ -21,9 +21,9 @@
 	}
 
     # Indice de los flujos futuros:
-    index_fwd <- which(object@period_ini_date >= date)
+    index_fwd <- which(object@period_ini_date > date)
     #Indice de los flujos pasados, es decir, los que ya son fijos:
-    index_fix <- which(object@period_ini_date < date)
+    index_fix <- which(object@period_ini_date <= date)
     
     # Nodos necesarios para calcular las tasas forward:
     nodes_1 <- as.numeric(object@period_ini_date - as.Date(valDate))
